@@ -196,6 +196,7 @@ New to UI/UX? Jump to [Beginner-Friendly (Start Here)](#beginner-friendly-start-
 | [Awwwards](https://awwwards.com) | Website design showcase and awards gallery | Free |
 | [Behance](https://behance.net) | Adobe's portfolio platform for design case studies | Free |
 | [Dark Mode Design](https://www.darkmodedesign.com) | Showcase of dark mode website designs | Free |
+| [Design Details](https://designdetails.io/) | Real website design library with full-page captures, motion recordings, typography, and color breakdowns | Free |
 | [Dribbble](https://dribbble.com) | Design community for sharing work and portfolios | Free / Paid |
 | [Godly](https://godly.website) | Curated web design inspiration gallery | Free |
 | [Land-book](https://land-book.com) | Curated landing page design gallery | Free |

@@ -1,0 +1,44 @@
+name: Link Check
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC
+    - cron: "0 8 * * 1"
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links with lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-retries 3
+            --timeout 20
+            --accept '200..=399,401,403,406,409,429'
+            --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            README.md
+          format: markdown
+          output: lychee/out.md
+          fail: true
+
+      - name: Create issue from report
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "[Link Check] Broken links found"
+          content-filepath: lychee/out.md
+          labels: |
+            bug
+            needs-fix
+          # Update the existing report issue instead of opening a new one every week
+          issue-number: ${{ vars.LINK_CHECK_ISSUE_NUMBER }}
